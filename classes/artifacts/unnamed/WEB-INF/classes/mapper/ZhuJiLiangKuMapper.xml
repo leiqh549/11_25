@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hengzhi.mapper.ZhuJiLiangKuMapper">
+
+    <resultMap id="ZhuJiLiangKuResult" type="com.hengzhi.entity.ZhuJiLiangKu">
+        <result property="maoZhong" column="毛重"/>
+        <result property="piZhong" column="皮重"/>
+        <result property="jingZhong" column="净重"/>
+        <result property="maoZhongJiLiangYuan" column="毛重计量员"/>
+        <result property="maoZhongRiQi" column="毛重日期"/>
+        <result property="maoZhongShiJian" column="毛重时间"/>
+        <result property="pinZhong" column="品种"/>
+        <result property="jiLiangFangShi" column="计量方式"/>
+        <result property="gongHuoDanWei" column="供货单位"/>
+        <result property="shouHuoDanWei" column="收货单位"/>
+        <result property="bianHao" column="编号"/>
+        <result property="cheHao" column="车号"/>
+        <result property="riQiShiJian" column="日期时间"/>
+        <result property="kaHao" column="卡号"/>
+        <result property="yunShuDanWei" column="运输单位"/>
+        <result property="piZhongJiLiangYuan" column="皮重计量员"/>
+        <result property="piZhongRiQi" column="皮重日期"/>
+        <result property="piZhongShiJian" column="皮重时间"/>
+        <result property="piZhongCha" column="皮重差"/>
+        <result property="chuRuKu" column="出入库"/>
+    </resultMap>
+
+    <select id="showZhuJiLiangKu" resultMap="ZhuJiLiangKuResult">
+         SELECT 毛重,皮重,净重,毛重计量员,毛重日期,毛重时间,品种,计量方式,供货单位,收货单位,编号,车号,日期时间,卡号,运输单位,皮重计量员,皮重日期,皮重时间,皮重差,出入库 FROM 主计量库
+    </select>
+
+    <select id="tiaoJianChaXun" parameterType="com.hengzhi.entity.Condition" resultMap="ZhuJiLiangKuResult">
+        SELECT 毛重,皮重,净重,毛重计量员,毛重日期,毛重时间,品种,计量方式,供货单位,收货单位,编号,车号,日期时间,卡号,运输单位,皮重计量员,皮重日期,皮重时间,皮重差,出入库 FROM 主计量库
+        <where>
+        <!--<if test="condition.maoZhong != null and condition.maoZhong != ''">-->
+            <!--maoZhong = #{condition.maoZhong}-->
+        <!--</if>-->
+        <!--<if test="condition.piZhong != null and condition.piZhong != ''"  >-->
+            <!--piZhong = #{condition.piZhong}-->
+        <!--</if>-->
+        <!--<if test="condition.jingZhong != null and condition.jingZhong != ''">-->
+            <!--jingZhong = #{condition.jingZhong}-->
+        <!--</if>-->
+        <!--<if test="condition.maoZhongJiLiangYuan != null and condition.maoZhongJiLiangYuan != ''"  >-->
+            <!--maoZhongJiLiangYuan = #{condition.maoZhongJiLiangYuan}-->
+        <!--</if>-->
+        <!--<if test="condition.maoZhongRiQi != null and condition.maoZhongRiQi != ''">-->
+            <!--maoZhongRiQi = #{condition.maoZhongRiQi}-->
+        <!--</if>-->
+        <!--<if test="condition.maoZhongShiJian != null and condition.maoZhongShiJian != ''">-->
+            <!--maoZhongShiJian = #{condition.maoZhongShiJian}-->
+        <!--</if>-->
+        <!--<if test="condition.pinZhong != null and condition.pinZhong != ''" >-->
+            <!--pinZhong = #{condition.pinZhong};-->
+        <!--</if>-->
+        <!--<if test="condition.jiLiangFangShi != null and condition.jiLiangFangShi != ''">-->
+            <!--jiLiangFangShi = #{condition.jiLiangFangShi}-->
+        <!--</if>-->
+        <!--<if test="condition.gongHuoDanWei != null and condition.gongHuoDanWei != ''" >-->
+            <!--gongHuoDanWei = #{condition.gongHuoDanWei};-->
+        <!--</if>-->
+        <!--<if test="condition.shouHuoDanWei != null and condition.shouHuoDanWei != ''">-->
+            <!--shouHuoDanWei = #{condition.shouHuoDanWei}-->
+        <!--</if>-->
+        <!--<if test="condition.bianHao != null and condition.bianHao != ''">-->
+            <!--bianHao = #{condition.bianHao}-->
+        <!--</if>-->
+        <if test="condition.cheHao != null and conditon.cheHao != ''" >
+            and cheHao = #{condition.cheHao}
+        </if>
+        <!--<if test="condition.riQiShiJian != null and condition.riQiShiJian != ''" >-->
+            <!--riQiShiJian = #{condition.riQiShiJian}-->
+        <!--</if>-->
+        <!--<if test="condition.kaHao != null and condition.kaHao != ''" >-->
+            <!--kaHao = #{condition.kaHao};-->
+        <!--</if>-->
+        <!--<if test="condition.yunShuDanWei != null and condition.yunShuDanWei != ''">-->
+            <!--yunShuDanWei = #{condition.yunShuDanWei}-->
+        <!--</if>-->
+        <!--<if test="condition.piZhongJiLiangYuan != null and condition.piZhongJiLiangYuan != ''">-->
+            <!--piZhongJiLiangYuan = #{condition.piZhongJiLiangYuan}-->
+        <!--</if>-->
+        <!--<if test="condition.piZhongRiQi != null and condition.piZhongRiQi != ''" >-->
+            <!--piZhongRiQi = #{condition.piZhongRiQi};-->
+        <!--</if>-->
+        <!--<if test="condition.piZhongShiJian != null and condition.piZhongShiJian != ''">-->
+            <!--piZhongShiJian = #{condition.piZhongShiJian}-->
+        <!--</if>-->
+        <!--<if test="condition.piZhongCha != null and condition.piZhongCha != ''" >-->
+            <!--piZhongCha = #{condition.piZhongCha};-->
+        <!--</if>-->
+        <!--<if test="condition.chuRuKu != null and condition.chuRuKu != ''">-->
+            <!--chuRuKu = #{condition.chuRuKu}-->
+        <!--</if>-->
+        </where>
+    </select>
+
+</mapper>
